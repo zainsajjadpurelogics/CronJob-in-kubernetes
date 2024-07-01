@@ -18,7 +18,10 @@ spec:
             command:
             - /bin/bash
             - "-c"
-            - "kubectl rollout restart deployment qtrac-agent-template-service"
+            - |
+              echo "Job started at: $(date)"
+              kubectl rollout restart deployment qtrac-agent-template-service
+              echo "Deployment restarted successfully at: $(date)"
           restartPolicy: OnFailure
           serviceAccountName: deployment-restart-sa
           dnsPolicy: ClusterFirst
