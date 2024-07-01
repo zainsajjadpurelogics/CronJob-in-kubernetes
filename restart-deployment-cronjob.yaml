@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: restart-deployment-cronjob
+  namespace: qtrac
+spec:
+  schedule: "*/5 * * * *"  # Run at 3:00 am UTC, which is 8:10 AM PKT Friday
+  concurrencyPolicy: Allow
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec: 
+      backoffLimit: 2     
+      activeDeadlineSeconds: 600
+      template:
+        spec:
+          containers:
+          - name: restart-deployment
+            image: bitnami/kubectl:1.25.11
+            command:
+            - /bin/bash
+            - "-c"
+            - "kubectl rollout restart deployment qtrac-agent-template-service"
+          restartPolicy: OnFailure
+          serviceAccountName: deployment-restart-sa
+          dnsPolicy: ClusterFirst
+          securityContext: {}
+          terminationGracePeriodSeconds: 30
+          schedulerName: default-scheduler
+
