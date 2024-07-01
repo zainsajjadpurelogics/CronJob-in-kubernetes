@@ -6,7 +6,7 @@ metadata:
 spec:
   schedule: "*/5 * * * *"  # Run at 3:00 am UTC, which is 8:10 AM PKT Friday
   concurrencyPolicy: Allow
-  successfulJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 2
   jobTemplate:
     spec: 
