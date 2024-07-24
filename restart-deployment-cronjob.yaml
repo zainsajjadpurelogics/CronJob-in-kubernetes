@@ -4,7 +4,7 @@ metadata:
   name: restart-deployment-cronjob
   namespace: qtrac
 spec:
-  schedule: "0 3 * * 6"  # Run at 3:00 am UTC every Friday, which is 8:00 AM PKT every Friday
+  schedule: "0 11 * * *"  # Run at daily 11:00 am UTC every, which is 4:00 PM PKT every day
   concurrencyPolicy: Allow
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 2
