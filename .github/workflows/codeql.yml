@@ -31,7 +31,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['javascript-typescript', 'python']  # Add the languages you want to analyze
+        language: ['javascript-typescript']  # Add the languages you want to analyze
         # Optional: add build-mode configuration if needed
         # include:
         #  - language: java-kotlin
